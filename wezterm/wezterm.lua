@@ -145,6 +145,7 @@ local config = {
 -- apply plugins
 wezterm.plugin.require("https://github.com/catppuccin/wezterm").apply_to_config(config, { flavor = "mocha" })
 wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
+	position = "top",
 	indicator = {
 		leader = {
 			enabled = false,
