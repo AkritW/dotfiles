@@ -21,7 +21,6 @@ M.treesitter = {
 
     -- html
     "html",
-    "handlebars",
 
     -- dockerfile
     "dockerfile",
