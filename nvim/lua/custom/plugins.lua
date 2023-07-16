@@ -45,6 +45,25 @@ local plugins = {
     end,
   },
 
+  -- Markdown Preview
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = "markdown",
+    cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  -- Show online in Discord
+  {
+    "andweeb/presence.nvim",
+    config = function()
+      require("presence").setup()
+    end,
+    lazy = false,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
