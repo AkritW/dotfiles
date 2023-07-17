@@ -1,30 +1,37 @@
 # Akrit does dotfiles
 
-These are my personal dotfiles for setting up a development environment with Neovim (using NvChad), Wezterm, and Starship.
+Welcome to my personal dotfiles repository. This repository serves as a storage and sharing point for my configuration files (dotfiles) that set up my preferred development environment. The main tools I use are Neovim (with NvChad), Wezterm, and Starship.
 
-## Structure
+## Structure of the Repository
 
-The dotfiles are organized around the main tools I use: Neovim, Wezterm, and Starship. Each tool has its own directory, and within each directory, you'll find configuration files and scripts related to that tool.
+The repository is organized around the primary tools I use. Each tool has its own dedicated directory, housing the relevant configuration files and scripts. Here's a brief overview:
 
-- **neovim/**: Contains all Neovim related configurations, plugins, and scripts. I use NvChad as my Neovim configuration, so you'll find the NvChad config file here.
-- **wezterm/**: Contains the Wezterm configuration file and any related scripts.
-- **starship/**: Contains the Starship prompt configuration file.
+- **neovim/**: This directory contains all configurations, plugins, and scripts related to Neovim. I use NvChad as my Neovim configuration, which provides a modern, sleek, and fast interface for Neovim with sensible defaults and a plethora of plugins to enhance productivity.
+
+- **wezterm/**: Here, you'll find the Wezterm configuration file and any related scripts. Wezterm is a GPU-accelerated cross-platform terminal emulator and multiplexer. It's customizable and allows for advanced features like tabs and splits.
+
+- **starship/**: This directory houses the Starship prompt configuration file. Starship is a minimal, blazing-fast, and infinitely customizable prompt for any shell.
 
 ## Installation
 
-To install these dotfiles, clone the repository and run the bootstrap script:
+To set up your development environment like mine, you can clone this repository and run the bootstrap script. Here are the steps:
 
 ```sh
+# Clone the repository
 git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
-cp -r dotfiles/nvim ~/.config/nvim/
-cp -r dotfiles/wezterm ~/.config/wezterm/
-cp -r dotfiles/starship ~/.config/starship/
+
+# Copy the Neovim configuration
+cp -r ~/.dotfiles/nvim ~/.config/nvim/
+cp -r ~/.dotfiles/wezterm ~/.config/wezterm/
+cp -r ~/.dotfiles/starship ~/.config/starship/
 ```
+
+This will copy the appropriate configuration files to your home directory. All configurations and tweaks are done within the `~/.dotfiles` directory.
 
 ## Customization
 
-Feel free to fork this repository and customize it to suit your own needs. You can add new tools by creating new directories and adding configuration files and scripts as needed.
+If you find this repository useful. Feel free to fork this repository and customize it to suit your own needs. You can add new tools by creating new directories and adding configuration files and scripts as needed. The world of dotfiles is vast and personal; explore it and make it your own.
 
-## Thanks
+## Acknowledgments
 
-A big thank you to [holman](https://github.com/holman/dotfiles) and [ryanb](https://github.com/ryanb/dotfiles) for their dotfiles repositories, which served as a great starting point for my own.
+I owe a big thank you to [holman](https://github.com/holman/dotfiles) and [ryanb](https://github.com/ryanb/dotfiles). Their dotfiles repositories served as a great starting point for my own. They provided a solid foundation and inspiration that guided me in creating a dotfiles repository that suits my needs and preferences.
