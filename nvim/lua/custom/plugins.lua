@@ -49,7 +49,6 @@ local plugins = {
   {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
-    cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
@@ -58,10 +57,10 @@ local plugins = {
   -- Show online in Discord
   {
     "andweeb/presence.nvim",
+    event = "VeryLazy",
     config = function()
       require("presence").setup()
     end,
-    lazy = false,
   },
 
   -- To make a plugin not be loaded
