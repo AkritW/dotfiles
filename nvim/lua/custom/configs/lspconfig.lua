@@ -102,9 +102,12 @@ lspconfig.dockerls.setup {
 lspconfig.jsonls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { "json-languageserver", "--studio" },
+  cmd = { "vscode-json-language-server", "--stdio" },
   filetypes = { "json" },
-  provideFormatter = true,
+  init_options = {
+    provideFormatter = true,
+  },
+  single_file_support = true,
 }
 
 lspconfig.grammarly.setup {
@@ -125,7 +128,7 @@ lspconfig.graphql.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "graphql-lsp", "server", "-m", "stream" },
-  filetypes = { "graphql", "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  filetypes = { "graphql", "typescriptreact", "javascriptreact" },
   root_dir = util.root_pattern(".graphqlrc*", ".graphql.config.*", "graphql.config.*", ".git"),
 }
 
