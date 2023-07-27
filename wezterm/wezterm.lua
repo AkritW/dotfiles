@@ -39,7 +39,8 @@ local config = {
 		top = 0,
 		bottom = 0,
 	},
-	window_decorations = "NONE",
+	window_decorations = "NONE", -- change this to RESIZE on MacOS
+	native_macos_fullscreen_mode = true,
 	inactive_pane_hsb = {
 		saturation = 0.8,
 		brightness = 0.7,
