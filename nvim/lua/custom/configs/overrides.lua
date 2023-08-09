@@ -61,7 +61,7 @@ M.mason = {
     "stylua", -- formatter
 
     -- typescript stuff
-    "typescript-language-server", -- lsp server
+    "typescript-language-server",
     "prettierd", -- formatter
     "eslint_d", -- linter
 
@@ -102,7 +102,7 @@ M.mason = {
     "graphql-language-service-cli",
 
     -- rust stuff
-    "rust-analyzer", -- lsp server
+    -- [[ lsp is in typescript-tools]] --
 
     -- haskell stuff
     "haskell-language-server", -- lsp server

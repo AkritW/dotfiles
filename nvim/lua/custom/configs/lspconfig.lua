@@ -4,42 +4,40 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
--- -- if you just want default config for the servers then put them in a table
--- local servers = { "html", "cssls", "tsserver", "clangd" }
---
--- for _, lsp in ipairs(servers) do
---   lspconfig[lsp].setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---   }
--- end
+-- custom tools outside of mason
+local mason_registry = require "mason-registry"
+local typescript_tools = require "typescript-tools"
+local rust_tools = require "rust-tools"
+
+typescript_tools.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    separate_diagnostic_server = true,
+    publish_diagnostic_on = "insert_leave",
+    expose_as_code_action = {},
+    tsserver_path = mason_registry.get_package("typescript-language-server"):get_install_path()
+      .. "/node_modules/typescript/lib/tsserver.js",
+    tsserver_plugins = {},
+    tsserver_max_memory = "auto",
+    tsserver_format_options = {},
+    tsserver_file_preferences = {},
+    complete_function_calls = false,
+  },
+}
+
+rust_tools.setup {
+  on_attach = function(_, bufnr)
+    vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+    vim.keymap.set("n", "<Leader>a", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+  end,
+}
 
 lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "lua" },
   root_dir = util.root_pattern(".init.lua", ".git"),
-}
-
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  root_dir = util.root_pattern("tsconfig.json", "package.json", ".git"),
-  settings = {
-    typescript = {
-      inlayHints = {
-        includeInlayParameterNameHints = "literal",
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = false,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      },
-    },
-  },
 }
 
 lspconfig.pyright.setup {
