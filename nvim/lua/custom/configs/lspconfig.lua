@@ -158,3 +158,10 @@ lspconfig.clangd.setup {
   filetypes = { "c", "cpp", "cuda" },
   root_dir = util.root_pattern("Makefile", ".git"),
 }
+
+lspconfig.jdtls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "java" },
+  root_dir = util.root_pattern("build.gradle", "mvnw", "gradlew", ".git"),
+}

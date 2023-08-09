@@ -102,7 +102,7 @@ M.mason = {
     "graphql-language-service-cli",
 
     -- rust stuff
-    -- [[ lsp is in typescript-tools]] --
+    -- [[ lsp is in typescript-tools ]] --
 
     -- haskell stuff
     "haskell-language-server", -- lsp server
@@ -111,6 +111,9 @@ M.mason = {
     -- c/cpp stuff
     "clangd", -- lsp server
     "clang-format", -- formatter
+
+    -- java stuff
+    "jdtls",
   },
 }
 
