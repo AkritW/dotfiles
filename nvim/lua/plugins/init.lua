@@ -53,7 +53,7 @@ local default_plugins = {
   {
     "nvim-tree/nvim-web-devicons",
     opts = function()
-      return { override = require("nvchad_ui.icons").devicons }
+      return { override = require"nvchad_ui.icons.devicons" }
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "devicons")
@@ -230,7 +230,6 @@ local default_plugins = {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
-      vim.g.nvimtree_side = opts.view.side
     end,
   },
 
