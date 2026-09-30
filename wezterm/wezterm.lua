@@ -2,50 +2,41 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 local color = {
-	rosewater = "#f5e0dc",
-	flamingo = "#f2cdcd",
-	pink = "#f5c2e7",
-	mauve = "#cba6f7",
-	red = "#f38ba8",
-	maroon = "#eba0ac",
-	peach = "#fab387",
-	yellow = "#f9e2af",
-	green = "#a6e3a1",
-	teal = "#94e2d5",
-	sky = "#89dceb",
-	sapphire = "#74c7ec",
-	blue = "#89b4fa",
-	lavender = "#b4befe",
-	text = "#cdd6f4",
-	subtext1 = "#bac2de",
-	subtext0 = "#a6adc8",
-	overlay2 = "#9399b2",
-	overlay1 = "#7f849c",
-	overlay0 = "#6c7086",
-	surface2 = "#585b70",
-	surface1 = "#45475a",
-	surface0 = "#313244",
-	base = "#1e1e2e",
-	mantle = "#181825",
-	crust = "#11111b",
+  sun_plus = "#FFFDFB",
+  sun = "#FFF7ED",
+  sun_minus = "#F2E6D4",
+  sky_plus = "#CECECE",
+  sky = "#9E9E9E",
+  sky_minus = "#636363",
+  shade_plus = "#3E4044",
+  shade = "#24272B",
+  shade_minus = "#181B1F",
+  
+  red = "#E18163",
+  orange = "#D68B47",
+  yellow = "#B49E33",
+  green = "#4EB67F",
+  cyan = "#00B0D2",
+  blue = "#8C96EC",
+  purple = "#BE85D1",
+  magenta = "#D07EBA"
 }
 
 local config = {
 	enable_wayland = false,
-	default_prog = { "/usr/bin/zsh" },
 	window_padding = {
 		left = 0,
 		right = 0,
 		top = 0,
 		bottom = 0,
 	},
-	window_decorations = "NONE", -- change this to RESIZE on MacOS
+	window_decorations = "RESIZE",
 	native_macos_fullscreen_mode = true,
 	inactive_pane_hsb = {
 		saturation = 0.8,
 		brightness = 0.7,
 	},
-	color_scheme = "Catppuccin Macchiato",
+  color_scheme = "Penumbra",
 	font = wezterm.font("Ligconsolata"),
 	font_size = 21,
 	line_height = 1.2,
@@ -59,75 +50,69 @@ local config = {
 		active_titlebar_bg = "#252638",
 		inactive_titlebar_bg = "#252638",
 	},
-	colors = {
-		foreground = color.text,
-		background = color.base,
+colors = {
+    foreground = color.sky_plus,
+    background = color.shade,
+    
+    cursor_bg = color.sky_plus,
+    cursor_border = color.sky_plus,
+    cursor_fg = color.shade,
+    
+    selection_bg = color.shade_plus,
+    selection_fg = color.sun,
+    
+    ansi = {
+      color.shade_minus,
+      color.red,
+      color.green,
+      color.yellow,
+      color.blue,
+      color.purple,
+      color.cyan,
+      color.sky_plus
+    },
+    
+    brights = {
+      color.shade,
+      color.red,
+      color.green,
+      color.yellow,
+      color.blue,
+      color.purple,
+      color.cyan,
+      color.sun_plus
+    },
 
-		cursor_fg = color.base or color.crust,
-		cursor_bg = color.rosewater,
-		cursor_border = color.rosewater,
-
-		selection_fg = color.text,
-		selection_bg = color.surface2,
-
-		scrollbar_thumb = color.surface2,
-
-		split = color.overlay0,
-
-		ansi = {
-			color.subtext1 or color.surface1,
-			color.red,
-			color.green,
-			color.yellow,
-			color.blue,
-			color.pink,
-			color.teal,
-			color.surface2 or color.subtext1,
-		},
-
-		brights = {
-			color.subtext0 or color.surface2,
-			color.red,
-			color.green,
-			color.yellow,
-			color.blue,
-			color.pink,
-			color.teal,
-			color.surface1 or color.subtext0,
-		},
-		indexed = { [16] = color.peach, [17] = color.rosewater },
-		compose_cursor = color.flamingo,
-		tab_bar = {
-			background = color.crust,
-			active_tab = {
-				bg_color = color.mauve,
-				fg_color = color.crust,
-			},
-			inactive_tab = {
-				bg_color = color.mantle,
-				fg_color = color.text,
-			},
-			inactive_tab_hover = {
-				bg_color = color.base,
-				fg_color = color.text,
-			},
-			new_tab = {
-				bg_color = color.surface0,
-				fg_color = color.text,
-			},
-			new_tab_hover = {
-				bg_color = color.surface1,
-				fg_color = color.text,
-			},
-			inactive_tab_edge = color.surface0,
-		},
-
-		visual_bell = color.surface0,
-	},
+    tab_bar = {
+      background = color.shade_minus,
+      active_tab = {
+        bg_color = color.shade_plus,
+        fg_color = color.sun
+      },
+      inactive_tab = {
+        bg_color = color.shade,
+        fg_color = color.sky
+      },
+      inactive_tab_hover = {
+        bg_color = color.sky_minus,
+        fg_color = color.sun_minus
+      },
+      new_tab = {
+        bg_color = color.shade,
+        fg_color = color.sun
+      },
+      new_tab_hover = {
+        bg_color = color.sky_plus,
+        fg_color = color.sun
+      }
+    },
+    
+    visual_bell = color.shade_minus
+  },
 	disable_default_key_bindings = false,
 	leader = { key = "b", mods = "CMD", timeout_milliseconds = 2000 },
 	keys = {
-		{ key = "v", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+    { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
 		{ key = "t", mods = "CTRL", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "w", mods = "CTRL", action = act.CloseCurrentTab({ confirm = true }) },
 		{ key = "q", mods = "CTRL", action = act.QuitApplication },
@@ -159,5 +144,7 @@ wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_co
 		},
 	},
 })
+
+config.enable_kitty_keyboard = true
 
 return config

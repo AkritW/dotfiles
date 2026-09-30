@@ -1,8 +1,17 @@
-/*
-!LICENSE
-!README.md
-!.gitignore
-!/nvim/
-!/assets/
-!/wezterm/
-!/starship/
+# Local authentication and machine-specific state
+gh/hosts.yml
+ghc/ghci_history
+cagent/user-uuid
+cagent/.cagent_first_run
+
+# Installed extensions and dependencies
+coc/
+yarn/
+**/node_modules/
+
+# OS metadata
+.DS_Store
+raycast/extensions/node_modules
+
+# Downloaded Raycast extensions
+raycast/
